@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  # App service
+  alecsi-profile:
+    # this build context will take the commands from Dockerfile
+    # command: yarn start
+    # image name
+    build: .
+    image: node:17
+    # container name
+    container_name: alecsi-profile
+    # always restart the container if it stops.
+    restart: always
+    # docker run -t is allow
+    tty: true
+    # application port, this is take value from env file
+    ports:
+      - "3001:3000"
+    # working directory
+    working_dir: /var/www/alecsi-profile
+    # application environment
+    volumes:
+      - ./:/var/www/alecsi-profile
+      # - /var/www/montanari-tech/node_modules
+      # application network, each container for a service joins this network s
+
